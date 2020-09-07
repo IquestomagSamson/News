@@ -1,0 +1,51 @@
+﻿@model IEnumerable<News.Models.News_comments>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.News.News_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment_date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.News.News_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment_date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Comment_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Comment_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Comment_id })
+        </td>
+    </tr>
+}
+
+</table>

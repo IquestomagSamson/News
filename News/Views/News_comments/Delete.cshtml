@@ -1,0 +1,56 @@
+﻿@model News.Models.News_comments
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>News_comments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.News.News_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.News.News_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment_date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
