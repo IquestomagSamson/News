@@ -21,20 +21,9 @@ namespace News.Controllers
         
         public ActionResult Index()
         {
-            var host = ConfigurationManager.AppSettings["host"].ToString();
-            var port = Convert.ToInt32(ConfigurationManager.AppSettings["port"]);
-            RedisEndpoint redisEndpoint = new RedisEndpoint(host, port);
 
-            using (var client = new RedisClient(redisEndpoint))
-            {
-                var news = db.News.Include(n => n.Category);
-                ViewBag.news = news;
-                ViewBag.Visit = client.Increment("Website_Counter", 1);
-            }
-
-            return View();
-            //var news = db.News.Include(n => n.Category);
-            //return View(news.ToList());
+            var news = db.News.Include(n => n.Category);
+            return View(news.ToList());
         }
 
         // GET: News/Details/5
